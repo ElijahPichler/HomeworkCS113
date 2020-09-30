@@ -244,7 +244,7 @@ public class SingleLinkedList<E> {
 		Node<String> harry= new Node<String>("Harry", null);
 		Node<String> sam = new Node<String>("Sam", null);
 		
-		Node head = tom;
+		Node head = tom; 
 		tom.next = dick;
 		dick.next = harry;
 		harry.next = sam;
