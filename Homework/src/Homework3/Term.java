@@ -119,9 +119,12 @@ public class Term implements Comparable{
 	 */
 	 public String toString() {
 		 String sign = (coefficient >= 0)?"+":"-";
+		 String signExponent = (exponent >= 0)?"+":"-";
+		 if(exponent == 0)
+			 return sign + coefficient;
 		 if(coefficient < 0)
 			 coefficient *= -1;
-		 return sign + ((coefficient == 1)? "": coefficient) + "x^" + exponent;
+		 return sign + ((coefficient == 1)? "": coefficient) + "x^" + signExponent + exponent;
 	 }
 	 
 	

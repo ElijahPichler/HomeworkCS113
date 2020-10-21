@@ -69,13 +69,17 @@ public class Polynomial {
 	 * Makes the Polynomial into a String
 	 */
 	public String toString() {
+		if(list.size() == 0)
+			return "0";
+		
 		String outcome = "";
 		int c,e, coefficient;
 		for(int i = 0; i < list.size(); i++) {
+			
 			c = list.get(i).coefficient;
 			e = list.get(i).exponent;
 			coefficient = (c < 0)? c* -1:c*1;
-			outcome += ((c >= 0)?"+":"-") + coefficient + "x^" + e + " ";
+			outcome += ((c >= 0 && !outcome.equals(""))?"+":"-") + coefficient + "x^" + e + "";
 		}
 //		for(Term t : list) {
 //			outcome += ((t.coefficient >= 0)?"+":"-" + t.coefficient +"x^" + t.exponent);
