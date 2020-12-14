@@ -5,18 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * ChangeCalculator : Class containing the recursive method calculateChange, which determines and prints all
- * possible coin combinations representing a given monetary value in cents.
- *
- * Problem derived from Koffman & Wolfgang's Data Structures: Abstraction and Design Using Java (2nd ed.):
- * Ch. 5, Programming Project #7, pg. 291.
- *
- * NOTE: An additional method, printCombinationsToFile(int), has been added for the equivalent tester file to
- * verify that all given coin combinations are unique.
- */
+
 public class ChangeCalculator {
-	private static final int[] COINS = new int[] {25, 10, 5, 1}; //Array that holds all the values for each coin
+	private static final int[] COINS = new int[] {25, 10, 5, 1}; 
 	private static int counter = 0;
     /**
      * Wrapper method for determining all possible unique combinations of quarters, dimes, nickels, and pennies that
@@ -37,6 +28,7 @@ public class ChangeCalculator {
     	
     	
     	dispense(cents, 0, 0, 0, 0, 0);
+    	
         return counter;
     }
     
@@ -44,7 +36,7 @@ public class ChangeCalculator {
     /**
      * 
      * @param amount the amount of cents you want to calculate 
-     * @param start reflex the start of COINS array to begin calculating sum 
+     * @param start  of COINS array to begin calculating sum 
      * 				and prevents duplicate combinations (Starts at 0)	
      * @param q	count of quarters (start at 0)
      * @param d	count of dimes (start at 0)
@@ -54,7 +46,7 @@ public class ChangeCalculator {
     public static void  dispense(int amount, int start, int q, int d, int n, int p) {
     	//Base case when sum of coins equal amount 
     	if(amount == 0) {
-    		//printChange(q,d,n,p);
+    		printChange(q,d,n,p);
     		counter++;
     		return;
     	}
@@ -87,7 +79,7 @@ public class ChangeCalculator {
     public static String  dispensePrintToText(int amount, int start, int q, int d, int n, int p) {
     	//Base case when sum of coins equal amount 
     	if(amount == 0) {
-    		return printChange(q,d,n,p);
+    		 printChange(q,d,n,p);
     		
     	}
     	
@@ -128,20 +120,22 @@ public class ChangeCalculator {
      * @param p number of pennies
      */
     private static String printChange(int q, int d, int n, int p) {
-        String ans = "";
+        String out = "";
         if (q != 0) {
-            ans += q > 1 ? q + " Quarters " : q + " Quarter ";
+        	out += q > 1 ? q + " Quarters " : q + " Quarter ";
         }
         if (d != 0) {
-            ans += d > 1 ? d + " Dimes " : d + " Dime ";
+        	out += d > 1 ? d + " Dimes " : d + " Dime ";
         }
         if (n != 0) {
-            ans += n > 1 ? n + " Nickels " : n + " Nickel ";
+        	out += n > 1 ? n + " Nickels " : n + " Nickel ";
         }
         if (p != 0) {
-            ans += p > 1 ? p + " Pennies " : p + " Penny ";
+        	out += p > 1 ? p + " Pennies " : p + " Penny ";
         }
-        return ans;
+        
+        System.out.println(out);
+        return out;
     }
 
     /**
@@ -157,16 +151,16 @@ public class ChangeCalculator {
     public static void printCombinationsToFile(int cents) throws IOException {
         // TODO:
         // This when calculateChange is complete. Note that the text file must be created within this directory.
-    	File file = new File("CoinCombinations.txt");
-    	FileWriter fw = new FileWriter(file);
-    	PrintWriter pw = new PrintWriter(fw);
-    	pw.println(dispensePrintToText(cents,0,0,0,0,0));
-    	pw.close();
+//    	File file = new File("CoinCombinations.txt");
+//    	FileWriter fw = new FileWriter(file);
+//    	PrintWriter pw = new PrintWriter(fw);
+//    	pw.println(dispensePrintToText(cents,0,0,0,0,0));
+//    	pw.close();
     	
     	
     }
     public static void main(String[] args) throws IOException {
-    	printCombinationsToFile(4);
+    	calculateChange(75);
     }
 
 } // End of class ChangeCalculator

@@ -161,18 +161,11 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
     
     
     public int previousIndex() {  
-    	if(lastItemReturned == null) {
-    		return -1;
-    	}else {
-    		return index-1;
-    	}
-    	} // Fill Here
-    public int nextIndex() { 
-    	if(nextItem == null)
-    		return -1;
-    	else
-    	return index +1;    
-    	} // Fill here
+    		return index-1;	
+    } // Fill Here
+    public int nextIndex() { 	
+    	return index;    
+    } // Fill here
     /**
      * Sets previous item to a new object
      */
@@ -183,15 +176,23 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
     	lastItemReturned.data = o;
     	
     	
-    }  // not implemented
+    } 
     public void remove(){
-    	if(lastItemReturned == null) 
-    		throw new IllegalStateException();
-    	else {
-    		lastItemReturned.prev.next = nextItem;
-    		nextItem.prev = lastItemReturned.prev;
-    	}
-    	size--;
+    	
+		if(lastItemReturned != null){
+			if(lastItemReturned.prev == null){
+				lastItemReturned.next.prev = null;
+				head = lastItemReturned.next;
+			}else if(lastItemReturned.next == null){
+				lastItemReturned.prev.next = null;
+				tail = lastItemReturned.prev;
+			}else{
+				lastItemReturned.prev.next = nextItem;
+				nextItem.prev = lastItemReturned.prev;
+			}
+		}else
+			throw new IllegalStateException();
+		
     }      // not implemented
     /**
      * Moves the pointer to the next node and returns previous node

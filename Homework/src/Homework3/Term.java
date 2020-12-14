@@ -118,13 +118,32 @@ public class Term implements Comparable{
 	 * Makes Term into a string
 	 */
 	 public String toString() {
-		 String sign = (coefficient >= 0)?"+":"-";
-		 String signExponent = (exponent >= 0)?"+":"-";
-		 if(exponent == 0)
-			 return sign + coefficient;
-		 if(coefficient < 0)
-			 coefficient *= -1;
-		 return sign + ((coefficient == 1)? "": coefficient) + "x^" + signExponent + exponent;
+		 if(coefficient != 0) {
+			 
+			 String sign = (coefficient > 0)?"+":"-";
+			 String signExponent = (exponent > 0)?"":"-";
+			if(coefficient < 0) {
+				coefficient *= -1;
+			}
+			if(exponent < 0) {
+				exponent *= -1;
+			}
+			 if(exponent == 0) {
+				 System.out.println(sign + coefficient);
+				 return sign + coefficient;
+			 }
+
+			 if(exponent == 1) {
+				System.out.println(sign + ((coefficient == 1)? "": coefficient) + "x");
+				 return sign + ((coefficient == 1)? "": coefficient) + "x";
+			 }
+			 System.out.println(sign + ((coefficient == 1 || coefficient == -1)? "": coefficient) + "x^" + signExponent + exponent);
+			 return sign + ((coefficient == 1)? "": coefficient) + "x^" + signExponent + exponent;
+		 }else {
+			 System.out.println("");
+			 return "";
+		 }
+		 	
 	 }
 	 
 	

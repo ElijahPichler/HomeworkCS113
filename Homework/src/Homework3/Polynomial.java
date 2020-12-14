@@ -25,7 +25,7 @@ public class Polynomial {
 		Term t = new Term(); 
 		for(int i =0; i < p.getNumTerms(); i++) {
 			if(p.list.get(i).exponent == this.list.get(i).exponent)
-			this.list.get(i).coefficient += p.list.get(i).coefficient;
+				this.list.get(i).coefficient += p.list.get(i).coefficient;
 			
 		}
 	}
